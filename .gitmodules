@@ -1,0 +1,12 @@
+[submodule "os/lib/CMSIS_6"]
+	path = os/lib/CMSIS_6
+	url = git@github.com:ARM-software/CMSIS_6.git
+[submodule "os/lib/FreeRTOS-Kernel"]
+	path = os/lib/FreeRTOS-Kernel
+	url = git@github.com:FreeRTOS/FreeRTOS-Kernel.git
+[submodule "os/lib/uthash"]
+	path = os/lib/uthash
+	url = git@github.com:troydhanson/uthash.git
+[submodule "os/lib/cmsis-device-wb"]
+	path = os/lib/cmsis-device-wb
+	url = git@github.com:STMicroelectronics/cmsis-device-wb.git
