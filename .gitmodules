@@ -10,3 +10,6 @@
 [submodule "os/lib/cmsis-device-wb"]
 	path = os/lib/cmsis-device-wb
 	url = git@github.com:STMicroelectronics/cmsis-device-wb.git
+[submodule "os/tools/kconfig"]
+	path = os/tools/kconfig
+	url = git@github.com:AlexLanzano/kconfig.git
