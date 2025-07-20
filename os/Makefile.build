@@ -17,7 +17,7 @@ INCLUDE = -Iinclude/generated -Iinclude \
 		  -Ilib/FreeRTOS-Kernel/include \
 		  -Ilib/uthash/src
 
-CFLAGS = $(INCLUDE) -Wall -Werror -ffreestanding -MMD -MF .deps/$(dir)/$*.d -c
+CFLAGS = $(INCLUDE) -Wall -Werror -ffreestanding -MMD -MF .deps/$(dir)/$*.d -c -g
 
 ifdef CONFIG_CORTEX_M
 GCC = arm-none-eabi-gcc

@@ -5,7 +5,7 @@ LD = arm-none-eabi-ld
 OBJCOPY = arm-none-eabi-objcopy
 AR = arm-none-eabi-ar
 CFLAGS += -mcpu=cortex-m4
-LDFLAGS ?= -static -nostartfiles
+LDFLAGS ?= -static -nostartfiles -specs=nosys.specs -specs=nano.specs -mthumb
 endif
 
 os.bin: os.elf
