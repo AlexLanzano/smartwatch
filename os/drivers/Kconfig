@@ -1,0 +1,32 @@
+menu "Driver configuration"
+
+config ST_RCC
+        bool "Enables the ST RCC Driver"
+        help
+          Enables the ST RCC Driver
+
+config RCC_PLLM
+        int "Sets PLLM"
+        depends on ST_RCC
+        help
+          TODO: add the pll clock config
+
+config RCC_PLLN
+        int "Sets PLLN"
+        depends on ST_RCC
+        help
+          TODO: add the pll clock config
+
+config RCC_PLLP
+        int "Sets PLLP"
+        depends on ST_RCC
+        help
+          TODO: add the pll clock config
+
+config RCC_PLLQ
+        int "Sets PLLQ"
+        depends on ST_RCC
+        help
+          TODO: add the pll clock config
+
+endmenu

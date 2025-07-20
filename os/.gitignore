@@ -1,0 +1,10 @@
+*.a
+*.o
+*.elf
+*.bin
+.cache/
+.config*
+compile_commands.json
+include/generated/
+include/config/
+.deps*

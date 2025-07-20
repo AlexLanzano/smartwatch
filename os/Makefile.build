@@ -1,0 +1,49 @@
+obj-y :=
+dir-y :=
+
+include .config
+include $(dir)/Makefile
+
+__build-obj = $(patsubst %.o, $(dir)/%.o, $(obj-y))
+__build-dir = $(patsubst %, $(dir)/%, $(dir-y))
+ifdef build-bin
+__build-bin = $(patsubst %, $(dir)/%, $(build-bin))
+endif
+__build-deps = $(patsubst %.o, .deps/%.d, $(__build-obj))
+
+INCLUDE = -Iinclude/generated -Iinclude \
+		  -Ilib/CMSIS_6/CMSIS/Core/Include \
+		  -Ilib/cmsis-device-wb/Include \
+		  -Ilib/FreeRTOS-Kernel/include \
+		  -Ilib/uthash/src
+
+CFLAGS = $(INCLUDE) -Wall -Werror -ffreestanding -MMD -MF .deps/$(dir)/$*.d -c
+
+ifdef CONFIG_CORTEX_M
+GCC = arm-none-eabi-gcc
+LD = arm-none-eabi-ld
+OBJCOPY = arm-none-eabi-objcopy
+AR = arm-none-eabi-ar
+CFLAGS += -mcpu=cortex-m4
+endif
+
+.PHONY : __build
+__build: $(__build-obj) $(__build-dir) $(__build-bin)
+
+ifdef build-bin
+__all-obj = $(shell find $(dir) -name "*.o")
+$(dir)/$(build-bin): $(__build-obj) $(__build-dir)
+	$(AR) -rc $@ $(__all-obj)
+endif
+
+.PHONY: $(__build-dir)
+$(__build-dir):
+	make --no-print-directory -f Makefile.build dir=$@ build-bin=
+
+$(dir)/%.o: $(dir)/%.c
+	$(GCC) $(CFLAGS) $< -o $@
+
+%.d:
+	@mkdir -p $(@D)
+
+include $(__build-deps)

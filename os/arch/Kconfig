@@ -1,0 +1,4 @@
+config CORTEX_M
+    bool "Enable Cortex M"
+    help
+        Enables ARM Cortex M

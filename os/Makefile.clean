@@ -1,0 +1,15 @@
+newdir = $(patsubst %__clean__, %, $(dir))
+
+obj-y :=
+dir-y :=
+
+__clean-obj = $(wildcard $(newdir)/*.o)
+__clean-dir = $(wildcard $(newdir)/*/)
+
+.PHONY : __clean
+__clean: $(__clean-dir)
+	rm -rf $(__clean-obj)
+
+.PHONY: $(__clean-dir)
+$(__clean-dir):
+	make -f Makefile.clean dir=$@

@@ -1,0 +1,15 @@
+mainmenu "Smartwatch OS Configuration"
+
+source "drivers/Kconfig"
+
+source "arch/Kconfig"
+
+config STM32WB55
+    bool "Enable STM32WB55"
+    help
+        Enables the STM32WB55 MCU
+
+config LINKER_SCRIPT
+    string "linker script name"
+    help
+        Sets the linker script to link the object files with
